@@ -3,146 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <title>KAE Tweaks</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Inter,Arial;
+  font-family:Arial,Helvetica;
   background:#05070c;
-  color:#eefcff;
+  color:#eaffff;
 }
 header{
-  padding:90px 20px 60px;
+  padding:60px;
   text-align:center;
-  background:
-    radial-gradient(circle at top,#00ffff55,transparent 60%),
-    linear-gradient(180deg,#05070c,#0a1020);
+  background:linear-gradient(180deg,#00ffff,#001b33);
 }
-header h1{
-  font-family:Orbitron;
-  font-size:60px;
-  letter-spacing:4px;
-  background:linear-gradient(90deg,#00ffff,#3b7bff);
-  -webkit-background-clip:text;
-  color:transparent;
+h1{
+  margin:0;
+  font-size:48px;
 }
-header .stats{margin-top:15px;font-size:14px;opacity:.85}
-
-nav{
-  position:sticky;top:0;
+.pack{
+  max-width:900px;
+  margin:40px auto;
+  background:#0a1225;
+  padding:30px;
+  border-radius:20px;
+}
+.pack h2{color:#00ffff}
+.buttons{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 30px;
-  background:#05070c;
-  border-bottom:1px solid #0ff2;
+  gap:15px;
+  margin-top:15px;
 }
-nav button{
-  background:none;
-  border:1px solid #00ffff;
-  color:#00ffff;
-  padding:10px 18px;
-  border-radius:12px;
-  cursor:pointer;
-}
-nav .total{font-weight:600}
-
-section{display:none;padding:60px 25px}
-section.active{display:block}
-
-.grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-
-.card{
-  background:#0a1020;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 0 40px rgba(0,255,255,.08);
-}
-.card img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:14px;
-}
-.card h3{margin:15px 0 5px}
-.card p{opacity:.75;font-size:14px}
-.price{font-size:20px;color:#00ffff;margin:10px 0}
-.card button{
-  width:100%;
-  padding:12px;
+button{
+  flex:1;
+  padding:14px;
   border:none;
   border-radius:12px;
-  background:linear-gradient(90deg,#00ffff,#3b7bff);
-  font-weight:700;
   cursor:pointer;
+  font-weight:bold;
 }
-
-.cart{
-  max-width:520px;
-  margin:auto;
-  background:#0a1020;
-  padding:30px;
-  border-radius:24px;
-}
-.cart ul{list-style:none;padding:0}
-.cart li{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px;
-}
-.qty{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-.qty button{
-  background:none;
-  border:1px solid #0ff;
-  color:#0ff;
-  padding:4px 10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-#paypal{
-  display:block;
-  margin-top:18px;
-  padding:15px;
-  background:#ffc439;
-  color:#111;
-  text-align:center;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-}
-
-.toast{
-  position:fixed;
-  bottom:30px;right:30px;
-  background:#00ffff;
-  color:#000;
-  padding:14px 22px;
-  border-radius:14px;
-  display:none;
-}
-
-footer{
-  padding:40px;
-  text-align:center;
-  opacity:.6;
-}
-footer a{color:#00ffff;text-decoration:none}
+.apply{background:#00ffcc}
+.revert{background:#ff5c5c}
 </style>
 </head>
 
@@ -150,115 +50,49 @@ footer a{color:#00ffff;text-decoration:none}
 
 <header>
   <h1>KAE Tweaks</h1>
-  <div class="stats">+20 clientes satisfechos · by gallego & razor</div>
+  <p>by gallego & razor</p>
 </header>
 
-<nav>
-  <button onclick="view('shop')">Tienda</button>
-  <div class="total">Cesta: <span id="navTotal">0€</span></div>
-  <button onclick="view('cart')">Carrito</button>
-</nav>
-
-<section id="shop" class="active">
-  <div class="grid">
-
-    <!-- FPS -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=800&q=80">
-      <h3>FPS Pack</h3>
-      <p>Gameplay Fortnite / rendimiento</p>
-      <div class="price">1€</div>
-      <button onclick="add('FPS Pack',1)">Añadir</button>
-    </div>
-
-    <!-- CONTROLLER -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1606813907291-d86efa6b94db?auto=format&fit=crop&w=800&q=80">
-      <h3>Controller Pack</h3>
-      <p>Mando PlayStation / input lag</p>
-      <div class="price">1€</div>
-      <button onclick="add('Controller Pack',1)">Añadir</button>
-    </div>
-
-    <!-- WINDOWS -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80">
-      <h3>Windows Pack</h3>
-      <p>PC optimizado</p>
-      <div class="price">1€</div>
-      <button onclick="add('Windows Pack',1)">Añadir</button>
-    </div>
-
+<div class="pack">
+  <h2>FPS Pack</h2>
+  <p>Optimización de FPS para Fortnite / Valorant</p>
+  <div class="buttons">
+    <button class="apply" onclick="run('fps_apply.exe')">Aplicar</button>
+    <button class="revert" onclick="run('fps_revert.exe')">Revertir</button>
   </div>
-</section>
+</div>
 
-<section id="cart">
-  <div class="cart">
-    <h2>Carrito</h2>
-    <ul id="items"></ul>
-    <h3>Total: <span id="total">0</span>€</h3>
-    <a id="paypal" target="_blank">Pagar con PayPal</a>
+<div class="pack">
+  <h2>Controller Pack</h2>
+  <p>Reduce input lag del mando</p>
+  <div class="buttons">
+    <button class="apply" onclick="run('controller_apply.exe')">Aplicar</button>
+    <button class="revert" onclick="run('controller_revert.exe')">Revertir</button>
   </div>
-</section>
+</div>
 
-<div class="toast" id="toast">Añadido al carrito</div>
+<div class="pack">
+  <h2>Network Pack</h2>
+  <p>Ping más estable</p>
+  <div class="buttons">
+    <button class="apply" onclick="run('network_apply.exe')">Aplicar</button>
+    <button class="revert" onclick="run('network_revert.exe')">Revertir</button>
+  </div>
+</div>
 
-<footer>
-  <p>Soporte y pagos: maarcgaalleegoo@gmail.com</p>
-  <p>Twitter: <a href="https://x.com/Kaetwks" target="_blank">@Kaetwks</a></p>
-</footer>
+<div class="pack">
+  <h2>Windows Pack</h2>
+  <p>Optimización del sistema</p>
+  <div class="buttons">
+    <button class="apply" onclick="run('windows_apply.exe')">Aplicar</button>
+    <button class="revert" onclick="run('windows_revert.exe')">Revertir</button>
+  </div>
+</div>
 
 <script>
-let cart = {};
-
-function view(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-function add(name, price){
-  if(!cart[name]) cart[name]={price, qty:0};
-  cart[name].qty++;
-  toast();
-  update();
-}
-
-function update(){
-  const list=document.getElementById("items");
-  list.innerHTML="";
-  let total=0;
-
-  for(const k in cart){
-    const item=cart[k];
-    total+=item.price*item.qty;
-
-    const li=document.createElement("li");
-    li.innerHTML=`
-      ${k}
-      <div class="qty">
-        <button onclick="change('${k}',-1)">−</button>
-        ${item.qty}
-        <button onclick="change('${k}',1)">+</button>
-      </div>`;
-    list.appendChild(li);
-  }
-
-  document.getElementById("total").textContent=total;
-  document.getElementById("navTotal").textContent=total+"€";
-  document.getElementById("paypal").href=
-    "https://www.paypal.com/paypalme/maarcgaalleegoo/"+total;
-}
-
-function change(name, delta){
-  cart[name].qty+=delta;
-  if(cart[name].qty<=0) delete cart[name];
-  update();
-}
-
-function toast(){
-  const t=document.getElementById("toast");
-  t.style.display="block";
-  setTimeout(()=>t.style.display="none",1200);
+function run(file){
+  alert("El tweak se va a ejecutar.\nCuando termine, REINICIA EL PC.");
+  window.location.href = "tweaks/" + file;
 }
 </script>
 
