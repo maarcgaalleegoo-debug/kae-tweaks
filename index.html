@@ -1,227 +1,200 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gaming Tweaks Pro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --card: rgba(255,255,255,0.05);
-      --neon-blue: #00e5ff;
-      --neon-green: #00ff9c;
-      --text: #e6e6e6;
-      --muted: #9aa4b2;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #0f172a, var(--bg));
-      color: var(--text);
-    }
-    header {
-      padding: 80px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: var(--neon-blue);
-      text-shadow: 0 0 20px rgba(0,229,255,.4);
-    }
-    header p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
-    .cta {
-      margin-top: 40px;
-    }
-    .cta a {
-      padding: 15px 35px;
-      margin: 10px;
-      display: inline-block;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: .3s ease;
-    }
-    .primary {
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
-      color: #000;
-    }
-    .secondary {
-      border: 1px solid var(--neon-blue);
-      color: var(--neon-blue);
-    }
-    .cta a:hover { transform: scale(1.05); }
+<meta charset="UTF-8">
+<title>KAE Tweaks Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 25px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 25px rgba(0,229,255,.05);
-    }
-    .card h3 {
-      color: var(--neon-green);
-      margin-top: 0;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0f14;
+  color:#e6faff;
+}
+header{
+  text-align:center;
+  padding:50px 20px;
+  background:linear-gradient(120deg,#00e5ff,#0066ff);
+}
+header h1{margin:0;font-size:42px;}
+header p{margin-top:10px;opacity:.85}
 
-    .pricing {
-      text-align: center;
-    }
-    .price {
-      font-size: 3rem;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--neon-blue);
-    }
+.store{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  padding:50px 20px;
+}
 
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-  </style>
+.product{
+  background:#121923;
+  border-radius:18px;
+  width:260px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 0 25px rgba(0,229,255,.1);
+}
+
+.product img{
+  width:100%;
+  height:150px;
+  object-fit:contain;
+}
+
+.product h2{margin:15px 0 5px}
+.product span{font-size:20px;color:#00e5ff}
+
+.product button{
+  margin-top:15px;
+  width:100%;
+  padding:12px;
+  background:#00e5ff;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.cart{
+  max-width:420px;
+  margin:40px auto;
+  background:#121923;
+  padding:25px;
+  border-radius:18px;
+}
+
+.cart ul{padding:0;list-style:none}
+.cart li{margin-bottom:8px}
+
+.cart input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:none;
+}
+
+.cart button{
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  background:#0066ff;
+  border:none;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+#paypalBtn{
+  display:block;
+  margin-top:15px;
+  text-align:center;
+  padding:14px;
+  background:#ffc439;
+  color:#111;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:.6;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Gaming Tweaks Pro</h1>
-  <p>La app definitiva para reducir <b>latencia</b>, eliminar <b>input‑lag</b> y maximizar <b>FPS</b> en Fortnite, Valorant y juegos competitivos.</p>
-  <div class="cta">
-    <a href="#pricing" class="primary">Comprar ahora</a>
-    <a href="#features" class="secondary">Ver funciones</a>
-  </div>
+  <h1>KAE Tweaks</h1>
+  <p>by gallego & razor</p>
 </header>
 
-<section id="features">
-  <h2 style="text-align:center">🔥 Funciones principales</h2>
-  <div class="grid">
-    <div class="card"><h3>🌐 Network & Ping</h3><p>Optimización TCP, DNS gaming, Wi‑Fi y Ethernet para menor latencia.</p></div>
-    <div class="card"><h3>🎮 Controller</h3><p>PS5, Xbox y genéricos. USB low‑latency, polling rate y prioridad HID.</p></div>
-    <div class="card"><h3>⚡ FPS Boost</h3><p>Optimización de Windows, GPU, servicios y gráficos.</p></div>
-    <div class="card"><h3>🎯 Fortnite Pro</h3><p>Modo rendimiento, input‑lag mínimo y estabilidad máxima.</p></div>
-    <div class="card"><h3>🟥 Valorant Pro</h3><p>Latencia ultra baja y tweaks seguros para competitivo.</p></div>
-    <div class="card"><h3>🖥️ Display & Resolución</h3><p>Escalado, V‑Sync inteligente y resoluciones personalizadas.</p></div>
+<section class="store">
+
+  <div class="product">
+    <img src="https://cdn-icons-png.flaticon.com/512/3103/3103473.png">
+    <h2>FPS Pack</h2>
+    <p>Fortnite / Valorant</p>
+    <span>1€</span>
+    <button onclick="add('FPS Pack',1)">Añadir</button>
   </div>
-</section>
 
-<section id="pricing" class="pricing">
-  <h2>💸 Precios</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Pack Individual</h3>
-      <div class="price">1€</div>
-      <p>Elige 1 módulo (Network, Controller, FPS, Fortnite, Valorant…)</p>
-      <a class="primary" href="#">Comprar módulo</a>
-    </div>
-    <div class="card">
-      <h3>Pack Completo</h3>
-      <div class="price">3€</div>
-      <p>Todos los módulos + futuras actualizaciones</p>
-      <a class="primary" href="#">Comprar completo</a>
-    </div>
+  <div class="product">
+    <img src="https://cdn-icons-png.flaticon.com/512/599/599502.png">
+    <h2>Controller Pack</h2>
+    <p>Reduce input lag</p>
+    <span>1€</span>
+    <button onclick="add('Controller Pack',1)">Añadir</button>
   </div>
-</section>
 
-<section>
-  <h2 style="text-align:center">🛡️ Seguro y reversible</h2>
-  <p style="text-align:center; max-width:800px; margin:auto; color:var(--muted)">
-    Todos los tweaks son legales, seguros y reversibles. No se modifican archivos del juego ni se viola ningún anti‑cheat.
-  </p>
-</section>
-
-<section id="delivery">
-  <h2 style="text-align:center">📦 Descarga por módulo (Activar / Revertir)</h2>
-  <p style="text-align:center; max-width:900px; margin:auto; color:var(--muted)">
-    Tras la compra, cada módulo entrega una <b>carpeta independiente</b> con archivos para <b>activar</b> y <b>revertir</b> la optimización.
-    Puedes aplicar solo lo que quieras, cuando quieras, de forma segura.
-  </p>
-
-  <div class="grid" style="margin-top:40px">
-    <div class="card">
-      <h3>📁 Network / Latency</h3>
-      <p>
-        ├ activar_network.bat<br>
-        ├ revertir_network.bat<br>
-        └ info.txt
-      </p>
-      <p>Reduce ping, optimiza TCP, DNS gaming.</p>
-    </div>
-
-    <div class="card">
-      <h3>📁 Controller (PS5/Xbox)</h3>
-      <p>
-        ├ activar_controller.bat<br>
-        ├ revertir_controller.bat<br>
-        └ info.txt
-      </p>
-      <p>USB low‑latency, polling rate, sin input‑lag.</p>
-    </div>
-
-    <div class="card">
-      <h3>📁 FPS / System</h3>
-      <p>
-        ├ activar_fps.bat<br>
-        ├ revertir_fps.bat<br>
-        └ info.txt
-      </p>
-      <p>Más FPS, menos stuttering.</p>
-    </div>
-
-    <div class="card">
-      <h3>📁 Fortnite Pro</h3>
-      <p>
-        ├ activar_fortnite.bat<br>
-        ├ revertir_fortnite.bat<br>
-        └ info.txt
-      </p>
-      <p>Modo rendimiento + input mínimo.</p>
-    </div>
-
-    <div class="card">
-      <h3>📁 Valorant Pro</h3>
-      <p>
-        ├ activar_valorant.bat<br>
-        ├ revertir_valorant.bat<br>
-        └ info.txt
-      </p>
-      <p>Latencia ultra baja segura.</p>
-    </div>
+  <div class="product">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+    <h2>PRO Pack</h2>
+    <p>FPS + Ping + Controller</p>
+    <span>3€</span>
+    <button onclick="add('PRO Pack',3)">Añadir</button>
   </div>
+
 </section>
 
-<section>
-  <h2 style="text-align:center">🔄 Cómo funciona</h2>
-  <p style="text-align:center; max-width:900px; margin:auto; color:var(--muted)">
-    1️⃣ Compras un módulo o el pack completo<br>
-    2️⃣ Descargas un ZIP con las carpetas<br>
-    3️⃣ Ejecutas <b>ACTIVAR</b> como administrador<br>
-    4️⃣ Si quieres volver atrás, ejecutas <b>REVERTIR</b><br>
-    ✔ Sin reinstalar Windows · ✔ Sin riesgo · ✔ Control total
-  </p>
+<section class="cart">
+  <h2>Carrito</h2>
+  <ul id="items"></ul>
+
+  <input id="coupon" placeholder="Cupón">
+  <button onclick="coupon()">Aplicar cupón</button>
+
+  <h3>Total: <span id="total">0</span>€</h3>
+
+  <a id="paypalBtn" target="_blank">Pagar con PayPal</a>
 </section>
 
 <footer>
-  <p>© 2026 Gaming Tweaks Pro · Menos delay. Más victorias.</p>
+  <p>Soporte y pagos:maarcgaalleegoo@gmail.com</p>
+  <p>by gallego & razor</p>
 </footer>
+
+<script>
+let cart=[];
+let discount=0;
+
+function add(name,price){
+  cart.push({name,price});
+  render();
+}
+
+function render(){
+  const list=document.getElementById("items");
+  list.innerHTML="";
+  let total=0;
+
+  cart.forEach(p=>{
+    total+=p.price;
+    const li=document.createElement("li");
+    li.textContent=p.name+" - "+p.price+"€";
+    list.appendChild(li);
+  });
+
+  total-=discount;
+  if(total<0) total=0;
+
+  document.getElementById("total").textContent=total;
+  document.getElementById("paypalBtn").href=
+    "https://www.paypal.com/paypalme/maarcgaalleegoo@gmail.com/"+total;
+}
+
+function coupon(){
+  if(document.getElementById("coupon").value==="KAE10"){
+    discount=1;
+    render();
+  }
+}
+</script>
 
 </body>
 </html>
