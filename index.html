@@ -5,130 +5,142 @@
 <title>KAE Tweaks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Segoe UI,Arial;
-  background:#0a0d12;
-  color:#e8faff;
+  font-family:Inter,Arial;
+  background:#070b12;
+  color:#eafcff;
 }
-
 header{
-  padding:50px 20px;
+  padding:70px 20px;
   text-align:center;
-  background:radial-gradient(circle at top,#0ff,#0047ff 60%);
+  background:
+    radial-gradient(circle at top,#00ffff55,transparent 60%),
+    linear-gradient(180deg,#020409,#050b18);
 }
+header h1{
+  font-family:Orbitron;
+  font-size:56px;
+  letter-spacing:3px;
+  color:#00ffff;
+}
+header p{opacity:.8;margin-top:10px}
 
-header h1{margin:0;font-size:48px;letter-spacing:2px}
-header p{margin-top:10px;opacity:.85}
+.stats{
+  margin-top:20px;
+  font-size:14px;
+  opacity:.85;
+}
 
 nav{
   display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:20px;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:#050b18;
+  position:sticky;
+  top:0;
 }
-
 nav button{
-  padding:12px 25px;
-  background:#121a24;
-  color:#0ff;
-  border:1px solid #0ff;
-  border-radius:12px;
+  background:none;
+  border:1px solid #00ffff;
+  color:#00ffff;
+  padding:10px 18px;
+  border-radius:10px;
   cursor:pointer;
-  font-size:15px;
+}
+nav span{
+  font-weight:500;
 }
 
-section{display:none;padding:40px 20px}
+section{display:none;padding:50px 25px}
 section.active{display:block}
 
 .store{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
+  max-width:1200px;
+  margin:auto;
 }
 
 .product{
-  width:280px;
-  background:#10161f;
+  background:#0b1220;
   border-radius:20px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(0,255,255,.12);
+  padding:22px;
+  box-shadow:0 0 35px rgba(0,255,255,.08);
 }
-
 .product img{
   width:100%;
   height:160px;
-  object-fit:contain;
-  filter:drop-shadow(0 0 15px rgba(0,255,255,.25));
+  object-fit:cover;
+  border-radius:12px;
 }
-
-.product h2{margin:15px 0 5px}
-.product p{opacity:.8;font-size:14px}
-.product span{
-  display:block;
+.product h3{margin:15px 0 5px}
+.product p{opacity:.75;font-size:14px}
+.product .price{
   margin:10px 0;
-  font-size:22px;
-  color:#0ff;
+  font-size:20px;
+  color:#00ffff;
 }
-
 .product button{
   width:100%;
   padding:12px;
-  background:linear-gradient(90deg,#0ff,#007bff);
+  background:linear-gradient(90deg,#00ffff,#0066ff);
   border:none;
-  border-radius:12px;
-  cursor:pointer;
+  border-radius:10px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .cart{
   max-width:500px;
   margin:auto;
-  background:#10161f;
+  background:#0b1220;
   padding:30px;
   border-radius:20px;
 }
-
 .cart ul{list-style:none;padding:0}
 .cart li{margin-bottom:8px}
 
 .cart input{
   width:100%;
   padding:12px;
-  margin-top:15px;
+  margin-top:12px;
   border-radius:10px;
   border:none;
-}
-
-.cart button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:#0047ff;
-  color:white;
-  border:none;
-  border-radius:10px;
 }
 
 #paypal{
   display:block;
   margin-top:15px;
   padding:14px;
-  text-align:center;
   background:#ffc439;
   color:#111;
-  font-weight:bold;
-  border-radius:12px;
+  text-align:center;
+  border-radius:10px;
   text-decoration:none;
+  font-weight:bold;
+}
+
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#00ffff;
+  color:#000;
+  padding:12px 20px;
+  border-radius:10px;
+  display:none;
 }
 
 footer{
-  padding:30px;
   text-align:center;
+  padding:40px;
   opacity:.6;
 }
 </style>
@@ -138,47 +150,26 @@ footer{
 
 <header>
   <h1>KAE Tweaks</h1>
-  <p>by Gallego & Razor</p>
+  <p>Optimización competitiva para juegos</p>
+  <div class="stats">✔ +20 clientes satisfechos · by gallego & razor</div>
 </header>
 
 <nav>
   <button onclick="view('shop')">Tienda</button>
+  <span>Cesta: <b id="totalNav">0€</b></span>
   <button onclick="view('cart')">Ir al carrito</button>
 </nav>
 
 <section id="shop" class="active">
   <div class="store">
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f">
-      <h2>FPS Pack</h2>
-      <p>Optimización Fortnite / Valorant</p>
-      <span>1€</span>
-      <button onclick="add('FPS Pack',1)">Añadir</button>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
-      <h2>Controller Pack</h2>
-      <p>Reduce input lag DualSense</p>
-      <span>1€</span>
-      <button onclick="add('Controller Pack',1)">Añadir</button>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1555617117-08b8b0f5f2b5">
-      <h2>Network Pack</h2>
-      <p>Ping y estabilidad</p>
-      <span>1€</span>
-      <button onclick="add('Network Pack',1)">Añadir</button>
-    </div>
-
-    <div class="product">
-      <h2>🔥 TODOS LOS PACKS</h2>
-      <p>Pack completo KAE Tweaks</p>
-      <span>4€</span>
-      <button onclick="setAll()">Comprar todo</button>
-    </div>
+    <!-- 6 PACKS -->
+    <div class="product"><img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f"><h3>FPS Pack</h3><p>Fortnite / Valorant</p><div class="price">1€</div><button onclick="add('FPS Pack',1)">Añadir</button></div>
+    <div class="product"><img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7"><h3>Controller Pack</h3><p>Mando DualSense</p><div class="price">1€</div><button onclick="add('Controller Pack',1)">Añadir</button></div>
+    <div class="product"><img src="https://images.unsplash.com/photo-1555617117-08b8b0f5f2b5"><h3>Network Pack</h3><p>Ping estable</p><div class="price">1€</div><button onclick="add('Network Pack',1)">Añadir</button></div>
+    <div class="product"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420"><h3>Windows Pack</h3><p>Servicios & latencia</p><div class="price">1€</div><button onclick="add('Windows Pack',1)">Añadir</button></div>
+    <div class="product"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e"><h3>GPU Pack</h3><p>Drivers y ajustes</p><div class="price">1€</div><button onclick="add('GPU Pack',1)">Añadir</button></div>
+    <div class="product"><img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae"><h3>Input Lag Pack</h3><p>Respuesta instantánea</p><div class="price">1€</div><button onclick="add('Input Lag Pack',1)">Añadir</button></div>
 
   </div>
 </section>
@@ -188,58 +179,51 @@ footer{
     <h2>Carrito</h2>
     <ul id="items"></ul>
 
+    <input placeholder="Email del amigo (opcional)">
     <h3>Total: <span id="total">0</span>€</h3>
 
     <a id="paypal" target="_blank">Pagar con PayPal</a>
   </div>
 </section>
 
+<div class="toast" id="toast">Añadido al carrito</div>
+
 <footer>
   <p>Soporte y pagos: maarcgaalleegoo@gmail.com</p>
-  <p>by gallego & razor</p>
 </footer>
 
 <script>
 let cart=[];
-
 function view(id){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
-
 function add(name,price){
   cart.push({name,price});
+  toast();
   update();
 }
-
-function setAll(){
-  cart=[
-    {name:"FPS Pack",price:1},
-    {name:"Controller Pack",price:1},
-    {name:"Network Pack",price:1}
-  ];
-  update(4);
-  view("cart");
-}
-
-function update(forceTotal=null){
+function update(){
   const list=document.getElementById("items");
   list.innerHTML="";
-  let total=0;
+  let total=cart.reduce((a,b)=>a+b.price,0);
+  if(cart.length===3) total=2.5;
+  if(cart.length===6) total=4;
 
   cart.forEach(i=>{
-    total+=i.price;
     const li=document.createElement("li");
     li.textContent=i.name+" - "+i.price+"€";
     list.appendChild(li);
   });
 
-  if(cart.length===3 && total===3) total=2.5;
-  if(forceTotal!==null) total=forceTotal;
-
   document.getElementById("total").textContent=total;
-  document.getElementById("paypal").href=
-    "https://www.paypal.com/paypalme/maarcgaalleegoo@gmail.com/"+total;
+  document.getElementById("totalNav").textContent=total+"€";
+  document.getElementById("paypal").href="https://www.paypal.com/paypalme/maarcgaalleegoo@gmail.com/"+total;
+}
+function toast(){
+  const t=document.getElementById("toast");
+  t.style.display="block";
+  setTimeout(()=>t.style.display="none",1500);
 }
 </script>
 
