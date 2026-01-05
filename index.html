@@ -30,8 +30,7 @@ header h1{
   -webkit-background-clip:text;
   color:transparent;
 }
-header p{opacity:.85}
-header .stats{margin-top:15px;font-size:14px}
+header .stats{margin-top:15px;font-size:14px;opacity:.85}
 
 nav{
   position:sticky;top:0;
@@ -88,11 +87,6 @@ section.active{display:block}
   cursor:pointer;
 }
 
-.bundle{
-  border:1px solid #00ffff55;
-  background:linear-gradient(135deg,#0a1020,#060b18);
-}
-
 .cart{
   max-width:520px;
   margin:auto;
@@ -105,18 +99,20 @@ section.active{display:block}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
-.cart li button{
-  background:none;border:1px solid #0ff;
-  color:#0ff;padding:4px 10px;border-radius:8px;
+.qty{
+  display:flex;
+  gap:8px;
+  align-items:center;
 }
-
-.cart input{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  border-radius:10px;border:none;
+.qty button{
+  background:none;
+  border:1px solid #0ff;
+  color:#0ff;
+  padding:4px 10px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 #paypal{
@@ -154,7 +150,6 @@ footer a{color:#00ffff;text-decoration:none}
 
 <header>
   <h1>KAE Tweaks</h1>
-  <p>Optimización competitiva de alto nivel</p>
   <div class="stats">+20 clientes satisfechos · by gallego & razor</div>
 </header>
 
@@ -167,32 +162,31 @@ footer a{color:#00ffff;text-decoration:none}
 <section id="shop" class="active">
   <div class="grid">
 
-    <!-- 6 PACKS -->
-    <div class="card"><img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=800&q=80"><h3>FPS Pack</h3><p>Fortnite / rendimiento</p><div class="price">1€</div><button onclick="add('FPS Pack',1)">Añadir</button></div>
-
-    <div class="card"><img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80"><h3>Controller Pack</h3><p>Mando gamer / input lag</p><div class="price">1€</div><button onclick="add('Controller Pack',1)">Añadir</button></div>
-
-    <div class="card"><img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=80"><h3>Network Pack</h3><p>Ping y estabilidad</p><div class="price">1€</div><button onclick="add('Network Pack',1)">Añadir</button></div>
-
-    <div class="card"><img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=80"><h3>Windows Pack</h3><p>Sistema optimizado</p><div class="price">1€</div><button onclick="add('Windows Pack',1)">Añadir</button></div>
-
-    <div class="card"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"><h3>PC Performance</h3><p>CPU / GPU</p><div class="price">1€</div><button onclick="add('PC Performance',1)">Añadir</button></div>
-
-    <div class="card"><img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80"><h3>Input / Keyboard</h3><p>Respuesta instantánea</p><div class="price">1€</div><button onclick="add('Input / Keyboard',1)">Añadir</button></div>
-
-    <!-- BUNDLES -->
-    <div class="card bundle">
-      <h3>Pack 3 a elegir</h3>
-      <p>Elige cualquier 3 de los 6</p>
-      <div class="price">2,5€</div>
-      <button onclick="bundle3()">Añadir bundle</button>
+    <!-- FPS -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=800&q=80">
+      <h3>FPS Pack</h3>
+      <p>Gameplay Fortnite / rendimiento</p>
+      <div class="price">1€</div>
+      <button onclick="add('FPS Pack',1)">Añadir</button>
     </div>
 
-    <div class="card bundle">
-      <h3 style="color:#00ffff">Pack Completo</h3>
-      <p>Todos los tweaks KAE</p>
-      <div class="price">4€</div>
-      <button onclick="bundle6()">Añadir todo</button>
+    <!-- CONTROLLER -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606813907291-d86efa6b94db?auto=format&fit=crop&w=800&q=80">
+      <h3>Controller Pack</h3>
+      <p>Mando PlayStation / input lag</p>
+      <div class="price">1€</div>
+      <button onclick="add('Controller Pack',1)">Añadir</button>
+    </div>
+
+    <!-- WINDOWS -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80">
+      <h3>Windows Pack</h3>
+      <p>PC optimizado</p>
+      <div class="price">1€</div>
+      <button onclick="add('Windows Pack',1)">Añadir</button>
     </div>
 
   </div>
@@ -202,10 +196,7 @@ footer a{color:#00ffff;text-decoration:none}
   <div class="cart">
     <h2>Carrito</h2>
     <ul id="items"></ul>
-
-    <input placeholder="Email del amigo (opcional)">
     <h3>Total: <span id="total">0</span>€</h3>
-
     <a id="paypal" target="_blank">Pagar con PayPal</a>
   </div>
 </section>
@@ -218,27 +209,18 @@ footer a{color:#00ffff;text-decoration:none}
 </footer>
 
 <script>
-let cart=[];
+let cart = {};
 
 function view(id){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-function add(name,price){
-  cart.push({name,price});
+function add(name, price){
+  if(!cart[name]) cart[name]={price, qty:0};
+  cart[name].qty++;
   toast();
   update();
-}
-
-function bundle3(){
-  cart.push({name:"Bundle 3 Packs",price:2.5});
-  toast(); update();
-}
-
-function bundle6(){
-  cart.push({name:"Pack Completo",price:4});
-  toast(); update();
 }
 
 function update(){
@@ -246,13 +228,20 @@ function update(){
   list.innerHTML="";
   let total=0;
 
-  cart.forEach((i,idx)=>{
-    total+=i.price;
+  for(const k in cart){
+    const item=cart[k];
+    total+=item.price*item.qty;
+
     const li=document.createElement("li");
-    li.innerHTML=`${i.name} - ${i.price}€
-      <button onclick="remove(${idx})">–</button>`;
+    li.innerHTML=`
+      ${k}
+      <div class="qty">
+        <button onclick="change('${k}',-1)">−</button>
+        ${item.qty}
+        <button onclick="change('${k}',1)">+</button>
+      </div>`;
     list.appendChild(li);
-  });
+  }
 
   document.getElementById("total").textContent=total;
   document.getElementById("navTotal").textContent=total+"€";
@@ -260,15 +249,16 @@ function update(){
     "https://www.paypal.com/paypalme/maarcgaalleegoo/"+total;
 }
 
-function remove(i){
-  cart.splice(i,1);
+function change(name, delta){
+  cart[name].qty+=delta;
+  if(cart[name].qty<=0) delete cart[name];
   update();
 }
 
 function toast(){
   const t=document.getElementById("toast");
   t.style.display="block";
-  setTimeout(()=>t.style.display="none",1500);
+  setTimeout(()=>t.style.display="none",1200);
 }
 </script>
 
